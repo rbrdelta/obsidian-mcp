@@ -1,0 +1,36 @@
+{
+  "vault_path": "/mnt/c/MCP",
+  "folders": {
+    "inbox": "Inbox",
+    "conversations": "Sources/Claude-Conversations",
+    "templates": "Templates",
+    "attachments": "Attachments",
+    "meta": "Meta"
+  },
+  "domain_rules": {
+    "domain/career": ["job", "interview", "resume", "salary", "hiring", "employment", "linkedin", "recruiter", "chase", "jpmorgan", "talentcrm", "promotion", "onboarding", "performance review", "cover letter", "networking"],
+    "domain/ventures": ["composter", "composting", "startup", "business model", "revenue model", "b2b", "saas", "customer acquisition", "market opportunity", "pitch", "franchise", "distribution", "white label", "roi", "breakeven"],
+    "domain/building": ["code", "programming", "typescript", "python", "api", "server", "wsl", "linux", "github", "npm", "deploy", "docker", "database", "frontend", "backend", "react", "node", "css", "html", "debug"],
+    "domain/ai": ["claude", "chatgpt", "llm", "gpt", "anthropic", "openai", "mcp", "prompt", "fine-tune", "embedding", "transformer", "machine learning", "neural", "copilot", "gemini"],
+    "domain/freight": ["freight", "trucking", "logistics", "supply chain", "broker", "carrier", "shipping", "warehouse", "ltl", "ftl", "drayage", "intermodal"],
+    "domain/finance": ["investment", "budget", "income", "expense", "401k", "stock", "portfolio", "tax", "savings", "mortgage", "credit", "debt", "net worth", "financial plan"],
+    "domain/creative": ["furniture", "woodworking", "3d model", "blender", "oil painting", "canvas", "sketch", "design", "art", "sculpture", "craftsmanship", "upholstery"],
+    "domain/family": ["parenting", "baby", "toddler", "daycare", "pediatr", "family", "marriage", "home project", "renovation", "plumbing", "electrical", "ikea", "cleaning", "meal prep", "wellness", "exercise", "workout", "meditation"],
+    "domain/learning": ["course", "book", "reading", "study", "tutorial", "certificate", "lesson", "curriculum", "textbook", "mooc", "udemy", "coursera"],
+    "domain/meta": ["obsidian", "knowledge base", "pkm", "second brain", "zettelkasten", "vault", "frontmatter", "taxonomy", "tagging", "note-taking", "roam"]
+  },
+  "mode_rules": {
+    "mode/thinking": ["what if", "should i", "pros and cons", "tradeoff", "compare", "analysis", "strategy", "brainstorm", "evaluate", "hypothesis", "explore", "consider"],
+    "mode/doing": ["todo", "checklist", "to-do", "action item", "next step", "deadline", "schedule", "book appointment", "call", "buy", "order", "pick up", "drop off", "reminder"],
+    "mode/reference": ["how to", "guide", "reference", "documentation", "cheat sheet", "template", "list of", "contacts", "addresses", "phone number", "account", "password", "lookup"],
+    "mode/reflection": ["lesson learned", "retrospective", "looking back", "realized", "mistake", "growth", "journal", "grateful", "proud of", "what went well", "what i learned"]
+  },
+  "auto_tag_rules": {
+    "career": ["job", "interview", "resume", "salary", "hiring", "work", "employment"],
+    "pkm": ["obsidian", "knowledge base", "notes", "pkm", "second brain", "zettelkasten"],
+    "dev": ["code", "programming", "typescript", "python", "api", "server", "wsl", "linux"],
+    "ai": ["claude", "chatgpt", "llm", "ai", "mcp", "anthropic", "openai"],
+    "business": ["startup", "saas", "product", "revenue", "customer", "market"],
+    "finance": ["money", "investment", "budget", "income", "expense"]
+  }
+}

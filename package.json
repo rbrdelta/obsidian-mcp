@@ -1,0 +1,42 @@
+{
+  "name": "obsidian-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for Obsidian vault knowledge base",
+  "main": "dist/server.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "dev": "VAULT_PATH=/mnt/c/MCP-dev ts-node src/server.ts",
+    "test": "VAULT_PATH=/mnt/c/MCP-dev npx ts-node tests/tool_tests.ts",
+    "test:prod": "VAULT_PATH=/mnt/c/MCP npx ts-node tests/tool_tests.ts",
+    "promote": "echo 'Promote: rebuild, test against dev, then test against prod' && npm run build && npm test && npm run test:prod",
+    "sync": "VAULT_PATH=/mnt/c/MCP npx ts-node src/importers/claude_api_sync.ts",
+    "sync:dry": "VAULT_PATH=/mnt/c/MCP npx ts-node src/importers/claude_api_sync.ts --dry-run",
+    "sync:dev": "VAULT_PATH=/mnt/c/MCP-dev npx ts-node src/importers/claude_api_sync.ts",
+    "notion:sync": "VAULT_PATH=/mnt/c/MCP npx ts-node src/importers/notion_sync.ts",
+    "notion:dry": "VAULT_PATH=/mnt/c/MCP npx ts-node src/importers/notion_sync.ts --dry-run",
+    "notion:dev": "VAULT_PATH=/mnt/c/MCP-dev npx ts-node src/importers/notion_sync.ts",
+    "apple:sync": "VAULT_PATH=/mnt/c/MCP npx ts-node src/importers/apple_notes_sync.ts",
+    "apple:dry": "VAULT_PATH=/mnt/c/MCP npx ts-node src/importers/apple_notes_sync.ts --dry-run",
+    "apple:dev": "VAULT_PATH=/mnt/c/MCP-dev npx ts-node src/importers/apple_notes_sync.ts",
+    "reclassify": "VAULT_PATH=/mnt/c/MCP npx ts-node src/importers/reclassify.ts",
+    "reclassify:dry": "VAULT_PATH=/mnt/c/MCP npx ts-node src/importers/reclassify.ts --dry-run",
+    "reclassify:dev": "VAULT_PATH=/mnt/c/MCP-dev npx ts-node src/importers/reclassify.ts",
+    "reclassify:dev:dry": "VAULT_PATH=/mnt/c/MCP-dev npx ts-node src/importers/reclassify.ts --dry-run",
+    "links": "VAULT_PATH=/mnt/c/MCP npx ts-node src/importers/link_builder.ts",
+    "links:dry": "VAULT_PATH=/mnt/c/MCP npx ts-node src/importers/link_builder.ts --dry-run",
+    "links:dev": "VAULT_PATH=/mnt/c/MCP-dev npx ts-node src/importers/link_builder.ts",
+    "links:dev:dry": "VAULT_PATH=/mnt/c/MCP-dev npx ts-node src/importers/link_builder.ts --dry-run"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.78.0",
+    "@modelcontextprotocol/sdk": "^1.27.1",
+    "glob": "^10.0.0",
+    "gray-matter": "^4.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "ts-node": "^10.0.0",
+    "typescript": "^5.0.0"
+  }
+}
