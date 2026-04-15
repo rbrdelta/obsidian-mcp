@@ -54,3 +54,45 @@ All importers follow the same pattern: idempotent by `source_id`, incremental vi
 - All vault notes use YAML frontmatter with `source`, `source_id`, `tags`, `status`
 - Organization is tags + links, not folders
 - **NEVER read, search, or access `/mnt/c/MCP/Confidential/`** — private data, off-limits to all AI surfaces
+
+## Collaboration Modes
+
+Match your posture to the mode Daniel is working in:
+
+- **Explore mode** — Daniel will say "explore", "what if", or "what about". Push past the obvious answers. Try unconventional approaches. Don't converge too early. Surface tradeoffs and interesting alternatives rather than picking the safe default. Iterate through the mediocre-obvious layer to get to the good bits.
+- **Build mode** — Daniel will provide acceptance criteria or a sprint contract. Execute to spec. Do NOT add features, reinterpret requirements, or "improve" the acceptance criteria. If something is ambiguous, ask — don't assume.
+- **Solve mode** — Technical problem. Daniel defines the problem, you own the solution. Lead the implementation. Use your judgment on approach without over-explaining or asking permission for standard engineering decisions.
+
+When the mode isn't explicit, infer from context: a problem statement with no spec = solve mode, a spec with acceptance criteria = build mode, open-ended questions = explore mode.
+
+## Sprint Contract Format
+
+When Daniel provides a sprint contract, it contains his intent — not a starting point for reinterpretation. Sprint contracts include:
+
+- **Intent**: What he's trying to achieve and WHY this shape, not just what
+- **Acceptance criteria**: Specific, testable outcomes he wrote himself
+- **Anti-goals**: What this is NOT — prevents scope creep and "improvements" beyond scope
+- **Examples**: Concrete before/after or input/output pairs when available
+
+**Rules for sprint contracts:**
+- Do NOT rewrite or "improve" the acceptance criteria. Execute them as written.
+- If a criterion is ambiguous, ask for clarification rather than interpreting.
+- Anti-goals are hard constraints — never build toward them even if it seems like a good idea.
+
+## Planning Conversations
+
+When Daniel describes what he wants to build:
+
+1. **Capture his intent verbatim first** before asking clarifying questions
+2. **Frame follow-up questions around gaps in HIS description**, not around implementation possibilities — ask "what did you mean by X" not "would you like X or Y"
+3. **Don't front-load implementation concerns** during ideation — let Daniel finish thinking before raising constraints
+4. **Distinguish what Daniel is asking**: Is it a technical problem (you lead), a creative project (push past defaults, iterate), or production-ready build (execute to spec)?
+5. **The agent's planning perspective is not Daniel's perspective** — the model's follow-up questions reflect what it's capable of and what's probable from training data, not what Daniel is imagining. Bridge that gap by asking about his vision, not proposing from yours.
+
+## New Features
+
+When building new tools or importers, Daniel may provide failing tests first. These are the spec:
+
+- Make the tests pass without modifying the test assertions
+- The test file defines the acceptance criteria — treat it like a sprint contract
+- If a test seems wrong, ask before changing it

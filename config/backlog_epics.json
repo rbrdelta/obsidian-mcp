@@ -7,6 +7,7 @@
       "tier": "1",
       "theme": "Career",
       "why": "Unblocks exam registration — nothing moves until this is done",
+      "rationale": "LLC is the gating dependency for Partner Network access, which gates exam registration. Chose LLC over sole proprietorship for liability isolation across Deadweight and Composter ventures. Must complete before any other CCA-F work is meaningful.",
       "match": { "sections": ["30-day certification", "career"], "subsections": ["certification"], "keywords": ["partner network", "llc", "register"] }
     },
     {
@@ -16,6 +17,7 @@
       "tier": "1",
       "theme": "Career",
       "why": "Fills safety/reliability knowledge gap — 15% of exam, biggest weakness",
+      "rationale": "Daniel's building experience is strong but safety/reliability theory is the gap. Academy courses are the official prep material and cover the 15% of the exam where he's weakest. Self-study from docs alone would miss the framing Anthropic expects.",
       "match": { "sections": ["30-day certification"], "subsections": ["certification"], "keywords": ["academy", "courses", "anthropic academy"] }
     },
     {
@@ -25,6 +27,7 @@
       "tier": "1",
       "theme": "Career",
       "why": "Credential that compresses Anthropic timeline from 9-12 months to 6-8 weeks",
+      "rationale": "The cert is a signal accelerator — it doesn't replace portfolio work but it compresses the credibility timeline. Without it, Daniel is another self-taught builder. With it, he's a certified practitioner with production projects. The combination is what makes the application package compelling.",
       "match": { "sections": ["30-day certification", "career"], "subsections": ["certification", "in progress"], "keywords": ["cca-f exam", "take cca", "cca-f certification"] }
     },
     {
@@ -34,6 +37,7 @@
       "tier": "1",
       "theme": "Career",
       "why": "Portfolio + cert = application-ready for Anthropic and AI labs",
+      "rationale": "The package ties together cert + portfolio + narrative into a single coherent pitch. Each piece alone is insufficient — the cert without projects is academic, projects without narrative are just repos. The package makes the argument that Daniel builds production AI systems with taste and discipline.",
       "match": { "sections": ["30-day certification", "career"], "subsections": ["shipping", "next up"], "keywords": ["apply to anthropic", "portfolio case study", "portfolio narrative"] }
     },
     {
@@ -43,6 +47,7 @@
       "tier": "1",
       "theme": "Revenue",
       "why": "Proves the tool works outside synthetic data — the demo that matters",
+      "rationale": "Synthetic data validation proved the extraction pipeline works, but real invoices have messy formatting, inconsistent fields, and edge cases that synthetics can't simulate. This is the credibility threshold — a demo on real data is the difference between a prototype and a product.",
       "match": { "sections": ["deadweight", "30-day certification"], "subsections": ["next up", "independent"], "keywords": ["real freight invoice", "real carrier invoice", "tune benchmarks", "carrier intelligence rules"] }
     },
     {
@@ -52,6 +57,7 @@
       "tier": "1",
       "theme": "Revenue",
       "why": "Automated accuracy measurement against known-good data",
+      "rationale": "Manual spot-checking doesn't scale and introduces bias. A formal eval suite with known-good invoice/result pairs makes accuracy measurable, regression-testable, and demonstrable to prospects. Also enables confident iteration on extraction prompts without fear of breaking existing cases.",
       "match": { "sections": ["30-day certification"], "subsections": ["independent"], "keywords": ["formal eval suite"] }
     },
     {
@@ -70,6 +76,7 @@
       "tier": "1",
       "theme": "Revenue",
       "why": "First real market signal on whether the tool has commercial value",
+      "rationale": "All the building is hypothesis until someone outside Daniel's circle reacts to it. Cold outreach is the fastest path to market signal — not warm intros that produce polite encouragement. The goal is honest rejection or genuine interest, not validation theater.",
       "match": { "sections": ["30-day certification"], "subsections": ["shipping"], "keywords": ["cold-email", "freight contacts"] }
     },
     {
@@ -214,6 +221,7 @@
       "tier": "Enabling",
       "theme": "Infrastructure",
       "why": "Daniel manages priorities from his phone without starting a Claude session",
+      "rationale": "The backlog currently lives in a JSON file that requires a Claude Code session to update. Notion is where Daniel already does quick mobile edits. Two-way sync means he can reprioritize from his phone on the subway and the vault stays current. One-way push isn't enough — he needs to pull changes back too.",
       "match": { "sections": ["agentic system"], "subsections": ["backlog visibility", "notion"], "keywords": ["notion backlog", "notion push", "notion pull", "vault pull", "wire into debrief", "design notion", "cron sync"] }
     },
     {
@@ -223,6 +231,7 @@
       "tier": "Enabling",
       "theme": "Infrastructure",
       "why": "Autonomous sprints don't need Daniel to intervene when they hit problems",
+      "rationale": "Current headless sprints stall on errors and wait for Daniel. Self-correction means the agent retries with adjusted approach, logs what it tried, and only escalates when genuinely stuck. This is the difference between 'runs unattended' and 'runs autonomously' — the latter requires the agent to handle its own failures.",
       "match": { "sections": ["agentic system"], "subsections": ["execution hardening"], "keywords": ["intervention mechanism", "rewrite d2 sprint", "unified page-level eval", "eval.md for remaining"] }
     },
     {
@@ -232,6 +241,7 @@
       "tier": "Enabling",
       "theme": "Portfolio",
       "why": "Published content reads like Daniel, not Claude",
+      "rationale": "AI-generated content is recognizable and undermines credibility, especially for someone applying to AI companies. Daniel's voice is direct, specific, opinionated — not the polished-neutral tone Claude defaults to. A voice reference corpus + draft skill means content comes out sounding like him from the first draft, not after three rounds of editing.",
       "match": { "sections": ["agentic system"], "subsections": ["content voice"], "keywords": ["voice audit", "voice reference corpus", "draft skill", "rewrite weakest"] }
     },
     {
@@ -241,6 +251,7 @@
       "tier": "Enabling",
       "theme": "Infrastructure",
       "why": "Requirements captured from phone without starting a session",
+      "rationale": "Daniel's best thinking happens away from the keyboard — on walks, commuting, in the middle of other things. By the time he opens a session, context is lost. Phone capture bridges the gap between having the idea and being at the computer. The triage agent ensures captures don't just pile up in an inbox.",
       "match": { "sections": ["agentic system"], "subsections": ["async capture"], "keywords": ["claude mobile app", "capture queue", "triage agent"] }
     },
     {
@@ -259,6 +270,7 @@
       "tier": "Enabling",
       "theme": "Infrastructure",
       "why": "Biggest gap in conversation history — Code session transcripts not in vault",
+      "rationale": "Claude.ai conversations are imported, but Code sessions — where most of the real building happens — are not. This creates a blind spot in the knowledge base. The vault can't link decisions to the sessions where they were made, and Daniel can't search his own build history.",
       "match": { "sections": ["obsidian"], "subsections": ["next up"], "keywords": ["code session importer", "re-run link builder"] }
     },
     {
@@ -277,6 +289,7 @@
       "tier": "Enabling",
       "theme": "Infrastructure",
       "why": "Removes Daniel from the execution loop — vault coordinates, Claude executes",
+      "rationale": "Daniel's bottleneck is not ideas or direction — it's execution bandwidth with a toddler and a full-time job. Autonomous sprints let Claude execute against well-specified contracts while Daniel sleeps or parents. PR-based review means he stays in control without being in the loop for every step.",
       "match": { "sections": ["agentic stack"], "subsections": ["phase 2", "phase 3", "autonomous"], "keywords": ["remote trigger", "pr-based review", "pr comments", "feedback via pr"] }
     },
     {
@@ -286,6 +299,7 @@
       "tier": "Enabling",
       "theme": "Infrastructure",
       "why": "Can't measure velocity or improve session discipline without data",
+      "rationale": "Daniel suspects some sessions are highly productive and others spin. Without data, he can't tell which patterns (time of day, task type, spec quality) correlate with good outcomes. Analytics turn gut feel into actionable improvement — which sessions to model, which anti-patterns to avoid.",
       "match": { "sections": ["claude harness"], "subsections": ["next up", "future"], "keywords": ["git hygiene", "active time threshold", "claude.ai", "desktop usage", "action-vs-planning", "planning ratio", "weekly automated session", "weekly digest"] }
     },
     {
