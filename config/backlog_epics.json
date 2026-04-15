@@ -214,7 +214,7 @@
       "tier": "Enabling",
       "theme": "Infrastructure",
       "why": "Daniel manages priorities from his phone without starting a Claude session",
-      "match": { "sections": ["agentic system"], "subsections": ["backlog visibility", "notion"], "keywords": ["notion backlog", "notion push", "notion pull", "vault pull", "wire into debrief", "design notion"] }
+      "match": { "sections": ["agentic system"], "subsections": ["backlog visibility", "notion"], "keywords": ["notion backlog", "notion push", "notion pull", "vault pull", "wire into debrief", "design notion", "cron sync"] }
     },
     {
       "key": "agentic/headless-sprints",
