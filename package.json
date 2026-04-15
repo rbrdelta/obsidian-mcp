@@ -26,7 +26,9 @@
     "links": "VAULT_PATH=/mnt/c/MCP npx ts-node src/importers/link_builder.ts",
     "links:dry": "VAULT_PATH=/mnt/c/MCP npx ts-node src/importers/link_builder.ts --dry-run",
     "links:dev": "VAULT_PATH=/mnt/c/MCP-dev npx ts-node src/importers/link_builder.ts",
-    "links:dev:dry": "VAULT_PATH=/mnt/c/MCP-dev npx ts-node src/importers/link_builder.ts --dry-run"
+    "links:dev:dry": "VAULT_PATH=/mnt/c/MCP-dev npx ts-node src/importers/link_builder.ts --dry-run",
+    "notion:push": "VAULT_PATH=/mnt/c/MCP npx ts-node src/importers/notion_backlog_push.ts",
+    "notion:push:dry": "VAULT_PATH=/mnt/c/MCP npx ts-node src/importers/notion_backlog_push.ts --dry-run"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.78.0",
