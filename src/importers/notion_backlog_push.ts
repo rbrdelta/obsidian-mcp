@@ -250,20 +250,19 @@ async function createDatabase(token: string, parentPageId: string, name: string)
   return result.id;
 }
 
-async function updateDatabaseSchema(token: string, dbId: string): Promise<void> {
-  // Fetch current database to see which properties exist
+async function migrateSchema(token: string, dbId: string, dbName: string): Promise<void> {
   const db = await notionRequest<{ properties: Record<string, { id: string; type: string }> }>(
     'GET', `/v1/databases/${dbId}`, token
   );
   await sleep(RATE_LIMIT_MS);
 
   const existingProps = Object.keys(db.properties);
-  const neededProps: Record<string, unknown> = {};
+  const changes: Record<string, unknown> = {};
 
   // Add any missing properties from DB_SCHEMA
   for (const [name, schema] of Object.entries(DB_SCHEMA)) {
     if (!existingProps.includes(name)) {
-      neededProps[name] = schema;
+      changes[name] = schema;
     }
   }
 
@@ -271,18 +270,19 @@ async function updateDatabaseSchema(token: string, dbId: string): Promise<void> 
   const oldProps = ['Tier', 'Theme', 'Deliverables', 'Remaining', 'Due Date', 'Notes', 'Rank'];
   for (const prop of oldProps) {
     if (existingProps.includes(prop)) {
-      neededProps[prop] = null; // null removes the property
+      changes[prop] = null; // null removes the property
     }
   }
 
-  if (Object.keys(neededProps).length > 0) {
-    process.stderr.write(`[backlog-push] Updating database schema: adding ${Object.keys(neededProps).filter(k => neededProps[k] !== null).join(', ')}` +
-      `, removing ${Object.keys(neededProps).filter(k => neededProps[k] === null).join(', ') || 'none'}\n`);
-    await notionRequest<unknown>('PATCH', `/v1/databases/${dbId}`, token, {
-      properties: neededProps,
-    });
-    await sleep(RATE_LIMIT_MS);
-  }
+  if (Object.keys(changes).length === 0) return;
+
+  const adding = Object.keys(changes).filter(k => changes[k] !== null);
+  const removing = Object.keys(changes).filter(k => changes[k] === null);
+  process.stderr.write(`[backlog-push] Migrating "${dbName}" — adding: ${adding.join(', ') || 'none'}, removing: ${removing.join(', ') || 'none'}\n`);
+  await notionRequest<unknown>('PATCH', `/v1/databases/${dbId}`, token, {
+    properties: changes,
+  });
+  await sleep(RATE_LIMIT_MS);
 }
 
 async function ensureDatabases(token: string, index: SyncIndex): Promise<{ activeId: string; archiveId: string }> {
@@ -297,9 +297,6 @@ async function ensureDatabases(token: string, index: SyncIndex): Promise<{ activ
     activeId = await findDatabase(token, CONTAINER_PAGE_ID, ACTIVE_DB_NAME) || await createDatabase(token, CONTAINER_PAGE_ID, ACTIVE_DB_NAME);
     await sleep(RATE_LIMIT_MS);
   }
-  // Ensure schema matches (handles migration from old epic-based schema)
-  await updateDatabaseSchema(token, activeId);
-
   let archiveId = index.archive_db_id;
   if (archiveId) {
     try {
@@ -311,8 +308,9 @@ async function ensureDatabases(token: string, index: SyncIndex): Promise<{ activ
     archiveId = await findDatabase(token, CONTAINER_PAGE_ID, ARCHIVE_DB_NAME) || await createDatabase(token, CONTAINER_PAGE_ID, ARCHIVE_DB_NAME);
     await sleep(RATE_LIMIT_MS);
   }
-  // Ensure schema matches
-  await updateDatabaseSchema(token, archiveId);
+  // Migrate schema on existing databases — add missing properties, remove old ones
+  await migrateSchema(token, activeId, ACTIVE_DB_NAME);
+  await migrateSchema(token, archiveId, ARCHIVE_DB_NAME);
 
   return { activeId, archiveId };
 }
