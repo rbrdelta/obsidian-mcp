@@ -24,18 +24,21 @@ echo ""
 echo "--- Recent commits ---"
 git log --oneline -5 2>/dev/null || echo "(no commits)"
 
-# Active tier-1 epics from backlog
+# Open deliverables by outcome
 BACKLOG="$PROJECT_DIR/config/backlog_epics.json"
 if [[ -f "$BACKLOG" ]]; then
   echo ""
-  echo "--- Active Tier 1 Epics ---"
-  # Extract tier-1 epic names and their why
+  echo "--- Open Deliverables ---"
   node -e "
     const data = require('$BACKLOG');
-    data.epics
-      .filter(e => e.tier === '1')
-      .slice(0, 8)
-      .forEach(e => console.log('  ' + e.key + ': ' + e.why));
+    const open = data.deliverables.filter(d => d.status === 'open');
+    for (const o of data.outcomes) {
+      const items = open.filter(d => d.outcome === o.key);
+      if (items.length === 0) continue;
+      console.log('  ' + o.key + ': ' + o.name + ' (' + items.length + ' open)');
+      items.slice(0, 3).forEach(d => console.log('    - ' + d.title));
+      if (items.length > 3) console.log('    + ' + (items.length - 3) + ' more');
+    }
   " 2>/dev/null || echo "(could not parse backlog)"
 fi
 
