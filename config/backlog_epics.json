@@ -1,350 +1,144 @@
 {
-  "epics": [
+  "outcomes": [
     {
-      "key": "ccaf/register-llc",
-      "name": "Register LLC and Partner Network access",
-      "initiative": "CCA-F + Anthropic",
-      "tier": "1",
-      "theme": "Career",
-      "why": "Unblocks exam registration — nothing moves until this is done",
-      "rationale": "LLC is the gating dependency for Partner Network access, which gates exam registration. Chose LLC over sole proprietorship for liability isolation across Deadweight and Composter ventures. Must complete before any other CCA-F work is meaningful.",
-      "match": { "sections": ["30-day certification", "career"], "subsections": ["certification"], "keywords": ["partner network", "llc", "register"] }
+      "key": "0",
+      "name": "Visibility & Prioritization",
+      "impact": "I can see, prioritize, and manage all work from my phone without starting a session. This is the foundation — nothing else is manageable without it."
     },
     {
-      "key": "ccaf/academy-courses",
-      "name": "Complete Anthropic Academy courses",
-      "initiative": "CCA-F + Anthropic",
-      "tier": "1",
-      "theme": "Career",
-      "why": "Fills safety/reliability knowledge gap — 15% of exam, biggest weakness",
-      "rationale": "Daniel's building experience is strong but safety/reliability theory is the gap. Academy courses are the official prep material and cover the 15% of the exam where he's weakest. Self-study from docs alone would miss the framing Anthropic expects.",
-      "match": { "sections": ["30-day certification"], "subsections": ["certification"], "keywords": ["academy", "courses", "anthropic academy"] }
+      "key": "A",
+      "name": "Application Lands",
+      "impact": "Applications submitted to Anthropic + 3-5 labs with CCA-F cert, portfolio with thesis, and content in my voice. Gets interviews."
     },
     {
-      "key": "ccaf/pass-exam",
-      "name": "Pass CCA-F exam",
-      "initiative": "CCA-F + Anthropic",
-      "tier": "1",
-      "theme": "Career",
-      "why": "Credential that compresses Anthropic timeline from 9-12 months to 6-8 weeks",
-      "rationale": "The cert is a signal accelerator — it doesn't replace portfolio work but it compresses the credibility timeline. Without it, Daniel is another self-taught builder. With it, he's a certified practitioner with production projects. The combination is what makes the application package compelling.",
-      "match": { "sections": ["30-day certification", "career"], "subsections": ["certification", "in progress"], "keywords": ["cca-f exam", "take cca", "cca-f certification"] }
+      "key": "B",
+      "name": "Deadweight Has Signal",
+      "impact": "Real carrier data validates the tool, real prospects react. Becomes portfolio evidence AND potential revenue."
     },
     {
-      "key": "ccaf/application-package",
-      "name": "Build application package",
-      "initiative": "CCA-F + Anthropic",
-      "tier": "1",
-      "theme": "Career",
-      "why": "Portfolio + cert = application-ready for Anthropic and AI labs",
-      "rationale": "The package ties together cert + portfolio + narrative into a single coherent pitch. Each piece alone is insufficient — the cert without projects is academic, projects without narrative are just repos. The package makes the argument that Daniel builds production AI systems with taste and discipline.",
-      "match": { "sections": ["30-day certification", "career"], "subsections": ["shipping", "next up"], "keywords": ["apply to anthropic", "portfolio case study", "portfolio narrative"] }
+      "key": "C",
+      "name": "Build Velocity",
+      "impact": "Ship more with less intervention per session. Agents handle their own failures, evaluate their own output."
     },
     {
-      "key": "deadweight/validate-real-data",
-      "name": "Validate on real freight data",
-      "initiative": "Deadweight",
-      "tier": "1",
-      "theme": "Revenue",
-      "why": "Proves the tool works outside synthetic data — the demo that matters",
-      "rationale": "Synthetic data validation proved the extraction pipeline works, but real invoices have messy formatting, inconsistent fields, and edge cases that synthetics can't simulate. This is the credibility threshold — a demo on real data is the difference between a prototype and a product.",
-      "match": { "sections": ["deadweight", "30-day certification"], "subsections": ["next up", "independent"], "keywords": ["real freight invoice", "real carrier invoice", "tune benchmarks", "carrier intelligence rules"] }
-    },
-    {
-      "key": "deadweight/eval-suite",
-      "name": "Build formal eval suite",
-      "initiative": "Deadweight",
-      "tier": "1",
-      "theme": "Revenue",
-      "why": "Automated accuracy measurement against known-good data",
-      "rationale": "Manual spot-checking doesn't scale and introduces bias. A formal eval suite with known-good invoice/result pairs makes accuracy measurable, regression-testable, and demonstrable to prospects. Also enables confident iteration on extraction prompts without fear of breaking existing cases.",
-      "match": { "sections": ["30-day certification"], "subsections": ["independent"], "keywords": ["formal eval suite"] }
-    },
-    {
-      "key": "deadweight/prepare-outreach",
-      "name": "Prepare for outreach",
-      "initiative": "Deadweight",
-      "tier": "1",
-      "theme": "Revenue",
-      "why": "Ready to put Deadweight in front of real prospects",
-      "match": { "sections": ["deadweight"], "subsections": ["next up"], "keywords": ["github repo", "outreach prep"] }
-    },
-    {
-      "key": "deadweight/cold-outreach",
-      "name": "Cold outreach to freight contacts",
-      "initiative": "Deadweight",
-      "tier": "1",
-      "theme": "Revenue",
-      "why": "First real market signal on whether the tool has commercial value",
-      "rationale": "All the building is hypothesis until someone outside Daniel's circle reacts to it. Cold outreach is the fastest path to market signal — not warm intros that produce polite encouragement. The goal is honest rejection or genuine interest, not validation theater.",
-      "match": { "sections": ["30-day certification"], "subsections": ["shipping"], "keywords": ["cold-email", "freight contacts"] }
-    },
-    {
-      "key": "deadweight/fuel-benchmarks",
-      "name": "Auto-update fuel benchmarks",
-      "initiative": "Deadweight",
-      "tier": "1",
-      "theme": "Revenue",
-      "why": "DOE diesel API keeps fuel benchmarks current without manual updates",
-      "match": { "sections": ["deadweight"], "subsections": ["future"], "keywords": ["doe diesel", "fuel benchmark"] }
-    },
-    {
-      "key": "deadweight/batch-processing",
-      "name": "Batch invoice processing",
-      "initiative": "Deadweight",
-      "tier": "1",
-      "theme": "Revenue",
-      "why": "Process a directory of invoices at once instead of one at a time",
-      "match": { "sections": ["deadweight"], "subsections": ["future"], "keywords": ["batch processing"] }
-    },
-    {
-      "key": "deadweight/agentic-delivery",
-      "name": "Auto-draft client emails",
-      "initiative": "Deadweight",
-      "tier": "1",
-      "theme": "Revenue",
-      "why": "Agentic delivery chain: report generated, email drafted automatically",
-      "match": { "sections": ["deadweight"], "subsections": ["future"], "keywords": ["agentic delivery"] }
-    },
-    {
-      "key": "deadweight/ocr",
-      "name": "Handle scanned invoices",
-      "initiative": "Deadweight",
-      "tier": "1",
-      "theme": "Revenue",
-      "why": "OCR preprocessing for image-based invoice PDFs",
-      "match": { "sections": ["deadweight"], "subsections": ["future"], "keywords": ["ocr"] }
-    },
-    {
-      "key": "website/fix-navigation",
-      "name": "Fix broken navigation and pages",
-      "initiative": "Website",
-      "tier": "1",
-      "theme": "Portfolio",
-      "why": "Basic QA before anyone reviews the portfolio",
-      "match": { "sections": ["rowbyroh"], "subsections": ["navigation", "impact tier 0"], "keywords": ["breadcrumbs", "duplicate deadweight", "visual verification"] }
-    },
-    {
-      "key": "website/blog-polish",
-      "name": "Polish blog posts to landing quality",
-      "initiative": "Website",
-      "tier": "1",
-      "theme": "Portfolio",
-      "why": "Each post needs a clear thesis and real numbers — blog is the writing sample",
-      "match": { "sections": ["rowbyroh"], "subsections": ["content as product", "impact tier 1"], "keywords": ["blog posts to 100"] }
-    },
-    {
-      "key": "website/portfolio-thesis",
-      "name": "Add thesis to portfolio pages",
-      "initiative": "Website",
-      "tier": "1",
-      "theme": "Portfolio",
-      "why": "External audience needs a reason to care before committing to read",
-      "match": { "sections": ["rowbyroh"], "subsections": ["content as product", "impact tier 1"], "keywords": ["portfolio.*so what", "portfolio \"so what\""] }
-    },
-    {
-      "key": "website/about-narrative",
-      "name": "Rewrite about page as narrative",
-      "initiative": "Website",
-      "tier": "1",
-      "theme": "Portfolio",
-      "why": "Story connecting architecture, GPT skepticism, Claude, constraint, toddler",
-      "match": { "sections": ["rowbyroh"], "subsections": ["content as product", "impact tier 1"], "keywords": ["about page narrative"] }
-    },
-    {
-      "key": "website/homepage-argument",
-      "name": "Build homepage argument",
-      "initiative": "Website",
-      "tier": "1",
-      "theme": "Portfolio",
-      "why": "Homepage makes a claim about who Daniel is before anyone clicks",
-      "match": { "sections": ["rowbyroh"], "subsections": ["site as argument", "impact tier 2"], "keywords": ["homepage thesis", "narrative arc"] }
-    },
-    {
-      "key": "website/d2-visual",
-      "name": "D2 diagram visual identity",
-      "initiative": "Website",
-      "tier": "1",
-      "theme": "Portfolio",
-      "why": "Assembly manual aesthetic for technical diagrams site-wide",
-      "match": { "sections": ["rowbyroh"], "subsections": ["d2"], "keywords": ["visual identity exploration"] }
-    },
-    {
-      "key": "website/highlight-components",
-      "name": "Build highlight components",
-      "initiative": "Website",
-      "tier": "1",
-      "theme": "Portfolio",
-      "why": "Interactive data callouts, annotated code, visual timelines — proves frontend craft",
-      "match": { "sections": ["rowbyroh"], "subsections": ["d3", "d4", "highlight"], "keywords": ["outside-the-box", "scope tbd"] }
-    },
-    {
-      "key": "website/mobile-polish",
-      "name": "Mobile polish pass",
-      "initiative": "Website",
-      "tier": "1",
-      "theme": "Portfolio",
-      "why": "Remaining responsive fixes across pages",
-      "match": { "sections": ["rowbyroh"], "subsections": ["maintenance"], "keywords": ["mobile polish"] }
-    },
-    {
-      "key": "composter/validate-demand",
-      "name": "Validate demand with Brooklyn PMs",
-      "initiative": "Composter",
-      "tier": "2",
-      "theme": "Revenue",
-      "why": "First real conversation with a potential customer",
-      "match": { "sections": ["composter", "30-day certification"], "subsections": ["next up", "independent"], "keywords": ["first outreach", "discovery calls", "nyc property"] }
-    },
-    {
-      "key": "composter/business-model",
-      "name": "Build business model",
-      "initiative": "Composter",
-      "tier": "2",
-      "theme": "Revenue",
-      "why": "Pricing and legal structure for distribution",
-      "match": { "sections": ["composter"], "subsections": ["next up"], "keywords": ["oem supplier", "pricing model", "entity formation"] }
-    },
-    {
-      "key": "composter/enforcement-data",
-      "name": "Monitor enforcement data",
-      "initiative": "Composter",
-      "tier": "2",
-      "theme": "Revenue",
-      "why": "Track NYC fine issuance rates to time market entry",
-      "match": { "sections": ["composter"], "subsections": ["waiting"], "keywords": ["enforcement escalation"] }
-    },
-    {
-      "key": "agentic/backlog-visibility",
-      "name": "Two-way Notion backlog sync",
-      "initiative": "Agentic System",
-      "tier": "Enabling",
-      "theme": "Infrastructure",
-      "why": "Daniel manages priorities from his phone without starting a Claude session",
-      "rationale": "The backlog currently lives in a JSON file that requires a Claude Code session to update. Notion is where Daniel already does quick mobile edits. Two-way sync means he can reprioritize from his phone on the subway and the vault stays current. One-way push isn't enough — he needs to pull changes back too.",
-      "match": { "sections": ["agentic system"], "subsections": ["backlog visibility", "notion"], "keywords": ["notion backlog", "notion push", "notion pull", "vault pull", "wire into debrief", "design notion", "cron sync"] }
-    },
-    {
-      "key": "agentic/headless-sprints",
-      "name": "Complete headless sprint self-correction",
-      "initiative": "Agentic System",
-      "tier": "Enabling",
-      "theme": "Infrastructure",
-      "why": "Autonomous sprints don't need Daniel to intervene when they hit problems",
-      "rationale": "Current headless sprints stall on errors and wait for Daniel. Self-correction means the agent retries with adjusted approach, logs what it tried, and only escalates when genuinely stuck. This is the difference between 'runs unattended' and 'runs autonomously' — the latter requires the agent to handle its own failures.",
-      "match": { "sections": ["agentic system"], "subsections": ["execution hardening"], "keywords": ["intervention mechanism", "rewrite d2 sprint", "unified page-level eval", "eval.md for remaining"] }
-    },
-    {
-      "key": "agentic/content-voice",
-      "name": "Establish Daniel's writing voice",
-      "initiative": "Agentic System",
-      "tier": "Enabling",
-      "theme": "Portfolio",
-      "why": "Published content reads like Daniel, not Claude",
-      "rationale": "AI-generated content is recognizable and undermines credibility, especially for someone applying to AI companies. Daniel's voice is direct, specific, opinionated — not the polished-neutral tone Claude defaults to. A voice reference corpus + draft skill means content comes out sounding like him from the first draft, not after three rounds of editing.",
-      "match": { "sections": ["agentic system"], "subsections": ["content voice"], "keywords": ["voice audit", "voice reference corpus", "draft skill", "rewrite weakest"] }
-    },
-    {
-      "key": "agentic/async-capture",
-      "name": "Build phone-to-Claude capture",
-      "initiative": "Agentic System",
-      "tier": "Enabling",
-      "theme": "Infrastructure",
-      "why": "Requirements captured from phone without starting a session",
-      "rationale": "Daniel's best thinking happens away from the keyboard — on walks, commuting, in the middle of other things. By the time he opens a session, context is lost. Phone capture bridges the gap between having the idea and being at the computer. The triage agent ensures captures don't just pile up in an inbox.",
-      "match": { "sections": ["agentic system"], "subsections": ["async capture"], "keywords": ["claude mobile app", "capture queue", "triage agent"] }
-    },
-    {
-      "key": "obsidian/vault-search",
-      "name": "Improve vault search accuracy",
-      "initiative": "Obsidian MCP",
-      "tier": "Enabling",
-      "theme": "Infrastructure",
-      "why": "Claude finds the right notes on first try",
-      "match": { "sections": ["agentic system", "obsidian"], "subsections": ["vault retrieval"], "keywords": ["title weighting", "word-boundary", "recency boost", "failed searches"] }
-    },
-    {
-      "key": "obsidian/code-session-importer",
-      "name": "Import Code sessions to vault",
-      "initiative": "Obsidian MCP",
-      "tier": "Enabling",
-      "theme": "Infrastructure",
-      "why": "Biggest gap in conversation history — Code session transcripts not in vault",
-      "rationale": "Claude.ai conversations are imported, but Code sessions — where most of the real building happens — are not. This creates a blind spot in the knowledge base. The vault can't link decisions to the sessions where they were made, and Daniel can't search his own build history.",
-      "match": { "sections": ["obsidian"], "subsections": ["next up"], "keywords": ["code session importer", "re-run link builder"] }
-    },
-    {
-      "key": "stack/housekeeping",
-      "name": "Agentic stack housekeeping",
-      "initiative": "Agentic Stack",
-      "tier": "Enabling",
-      "theme": "Infrastructure",
-      "why": "Clean up loose ends from skill migration and wire /program into vault",
-      "match": { "sections": ["agentic stack"], "subsections": ["cleanup", "next up"], "keywords": ["verify skills", "writing page navigation", "program integration", "architect handoff"] }
-    },
-    {
-      "key": "stack/autonomous-pipeline",
-      "name": "Build autonomous sprint pipeline",
-      "initiative": "Agentic Stack",
-      "tier": "Enabling",
-      "theme": "Infrastructure",
-      "why": "Removes Daniel from the execution loop — vault coordinates, Claude executes",
-      "rationale": "Daniel's bottleneck is not ideas or direction — it's execution bandwidth with a toddler and a full-time job. Autonomous sprints let Claude execute against well-specified contracts while Daniel sleeps or parents. PR-based review means he stays in control without being in the loop for every step.",
-      "match": { "sections": ["agentic stack"], "subsections": ["phase 2", "phase 3", "autonomous"], "keywords": ["remote trigger", "pr-based review", "pr comments", "feedback via pr"] }
-    },
-    {
-      "key": "harness/session-analytics",
-      "name": "Session analytics pipeline",
-      "initiative": "Claude Harness",
-      "tier": "Enabling",
-      "theme": "Infrastructure",
-      "why": "Can't measure velocity or improve session discipline without data",
-      "rationale": "Daniel suspects some sessions are highly productive and others spin. Without data, he can't tell which patterns (time of day, task type, spec quality) correlate with good outcomes. Analytics turn gut feel into actionable improvement — which sessions to model, which anti-patterns to avoid.",
-      "match": { "sections": ["claude harness"], "subsections": ["next up", "future"], "keywords": ["git hygiene", "active time threshold", "claude.ai", "desktop usage", "action-vs-planning", "planning ratio", "weekly automated session", "weekly digest"] }
-    },
-    {
-      "key": "obsidian/vault-improvements",
-      "name": "Vault improvements",
-      "initiative": "Obsidian MCP",
-      "tier": "Enabling",
-      "theme": "Infrastructure",
-      "why": "Better classification, health visibility, real-time sync",
-      "match": { "sections": ["obsidian"], "subsections": ["future"], "keywords": ["ai-powered classification", "vault health dashboard", "real-time sync"] }
-    },
-    {
-      "key": "website/deferred-skills-toolkit",
-      "name": "AI Skills Toolkit",
-      "initiative": "Website",
-      "tier": "1",
-      "theme": "Portfolio",
-      "why": "GitHub repo + blog post showing real AI skills work",
-      "match": { "sections": ["rowbyroh"], "subsections": ["deferred"], "keywords": ["ai skills toolkit"] }
-    },
-    {
-      "key": "website/deferred-activity-log",
-      "name": "Activity log on homepage",
-      "initiative": "Website",
-      "tier": "1",
-      "theme": "Portfolio",
-      "why": "PR-style feed of content updates and system changes",
-      "match": { "sections": ["rowbyroh"], "subsections": ["deferred"], "keywords": ["activity log"] }
-    },
-    {
-      "key": "website/composter-page",
-      "name": "Composter business page",
-      "initiative": "Website",
-      "tier": "1",
-      "theme": "Portfolio",
-      "why": "Portfolio page for composter business once validated",
-      "match": { "sections": ["rowbyroh"], "subsections": ["future"], "keywords": ["composter business page"] }
+      "key": "D",
+      "name": "Composter Validated",
+      "impact": "Market signal from real Brooklyn PMs — genuine interest or honest rejection."
     }
+  ],
+  "deliverables": [
+    { "id": "d001", "title": "Register LLC + professional email", "initiative": "CCA-F + Anthropic", "outcome": "A", "status": "open", "depends_on": null, "size": "S", "impact": "Gating dependency — blocks Partner Network, which blocks exam registration. Nothing moves without this." },
+    { "id": "d002", "title": "Complete 6 targeted Anthropic Academy courses", "initiative": "CCA-F + Anthropic", "outcome": "A", "status": "open", "depends_on": null, "size": "M", "impact": "Fills the safety/reliability knowledge gap (15% of exam, biggest weakness). Building experience is strong — this is the theory gap." },
+    { "id": "d003", "title": "Take CCA-F exam", "initiative": "CCA-F + Anthropic", "outcome": "A", "status": "open", "depends_on": ["d001", "d002"], "size": "S", "impact": "The credential itself. Compresses Anthropic timeline from 9-12 months to 6-8 weeks. Cert + portfolio = credibility shortcut." },
+    { "id": "d004", "title": "Apply to Anthropic + 3-5 labs", "initiative": "CCA-F + Anthropic", "outcome": "A", "status": "open", "depends_on": ["d003"], "size": "M", "impact": "THE outcome. Everything else is preparation for this moment." },
+    { "id": "d005", "title": "Blog posts to 100% (AI Pricing first, then Infra Beats Convenience)", "initiative": "Website", "outcome": "A", "status": "open", "depends_on": null, "size": "L", "impact": "Blog posts are the writing samples reviewers will read. AI Pricing has the strongest idea but weakest execution. Each post must land like Deadweight does: clear thesis, real numbers, point of view." },
+    { "id": "d006", "title": "Portfolio 'so what' — thesis for Obsidian MCP, Agentic Stack, Portfolio Analysis", "initiative": "Website", "outcome": "A", "status": "open", "depends_on": null, "size": "M", "impact": "These projects are inward-facing tools. Without a thesis, a reviewer sees 'built stuff for self.' With one, they see what it proves about how Daniel thinks." },
+    { "id": "d007", "title": "About page narrative flow — make transitions read as story", "initiative": "Website", "outcome": "A", "status": "open", "depends_on": null, "size": "S", "impact": "Voice is strong but transitions are abrupt. The thread connecting architecture → GPT skepticism → Claude → constraint → toddler exists but is implicit. Reviewers need the story, not the sequence." },
+    { "id": "d008", "title": "Portfolio narrative — connect MCP + taxonomy + agentic stack as AI product story", "initiative": "Website", "outcome": "A", "status": "open", "depends_on": ["d006"], "size": "M", "impact": "Turns separate projects into a coherent argument: 'I build production AI systems and I think about them as products, not just code.'" },
+    { "id": "d009", "title": "Voice audit — score 4 posts + agentic stack for Daniel vs Claude voice", "initiative": "Agentic System", "outcome": "A", "status": "open", "depends_on": null, "size": "S", "impact": "AI-generated portfolio applying to AI company is a credibility killer. This identifies exactly which content needs rewriting vs. minor pass." },
+    { "id": "d010", "title": "Build voice reference corpus (3-5 Daniel samples)", "initiative": "Agentic System", "outcome": "A", "status": "open", "depends_on": null, "size": "S", "impact": "Grounds all future content generation in Daniel's actual voice — direct, specific, opinionated. Without this, every draft starts from Claude's polished-neutral default." },
+    { "id": "d011", "title": "Update /draft skill with compose mode", "initiative": "Agentic System", "outcome": "A", "status": "open", "depends_on": ["d010"], "size": "S", "impact": "Daniel provides raw voice input, Claude structures without rewriting. Different from current multi-pass revision that smooths out the edges." },
+    { "id": "d012", "title": "Rewrite weakest posts (AI Pricing first)", "initiative": "Website", "outcome": "A", "status": "open", "depends_on": ["d009", "d011"], "size": "M", "impact": "Fixes the content that's actively hurting the portfolio. AI Pricing has the strongest idea but reads like Claude wrote it." },
+
+    { "id": "d013", "title": "Test Deadweight on real carrier invoice, document failure modes", "initiative": "Deadweight", "outcome": "B", "status": "open", "depends_on": null, "size": "S", "impact": "The credibility threshold. Demo on real data is the difference between prototype and product. Also surfaces edge cases synthetics can't simulate." },
+    { "id": "d014", "title": "Tune benchmarks with Daniel's carrier expertise", "initiative": "Deadweight", "outcome": "B", "status": "open", "depends_on": ["d013"], "size": "S", "impact": "Daniel's carrier-side expertise overrides research-based defaults. Makes output trustworthy for real prospects." },
+    { "id": "d015", "title": "Add carrier intelligence rules", "initiative": "Deadweight", "outcome": "B", "status": "open", "depends_on": ["d013"], "size": "S", "impact": "Daniel knows specific carrier tactics beyond what research captured. This is the domain knowledge moat." },
+    { "id": "d016", "title": "Cold-email 5 freight contacts", "initiative": "Deadweight", "outcome": "B", "status": "open", "depends_on": null, "size": "S", "impact": "First real market signal. Honest rejection or genuine interest — not validation theater from warm intros." },
+    { "id": "d017", "title": "Build formal eval suite (automated accuracy measurement)", "initiative": "Deadweight", "outcome": "B", "status": "open", "depends_on": ["d013"], "size": "M", "impact": "Makes accuracy measurable, regression-testable, and demonstrable. Enables confident iteration on extraction prompts without breaking existing cases." },
+
+    { "id": "d018", "title": "Wire intervention mechanism — blocker handoffs to known location", "initiative": "Agentic System", "outcome": "C", "status": "open", "depends_on": null, "size": "S", "impact": "Agents currently stall silently on blockers. This makes failures visible so Daniel can unblock without hunting through session logs." },
+    { "id": "d019", "title": "Unified page-level evaluation rubric (content + design together)", "initiative": "Agentic System", "outcome": "C", "status": "open", "depends_on": null, "size": "M", "impact": "Current separate evals don't catch when content and design both pass independently but the page is flat. Prevents rework discovered in D2 sprint." },
+    { "id": "d020", "title": "EVAL.md for remaining producing skills", "initiative": "Agentic System", "outcome": "C", "status": "open", "depends_on": ["d019"], "size": "M", "impact": "Consistency across all producing skills. Each skill self-evaluates against domain-specific rubric before declaring done." },
+
+    { "id": "d021", "title": "Design Notion backlog page structure", "initiative": "Obsidian MCP", "outcome": "0", "status": "open", "depends_on": null, "size": "S", "impact": "Maps the deliverable data model to a Notion layout Daniel can scan from his phone. One place to look and know what's planned, running, done, stuck." },
+    { "id": "d022", "title": "Build vault-to-Notion push", "initiative": "Obsidian MCP", "outcome": "0", "status": "open", "depends_on": ["d021"], "size": "M", "impact": "The actual sync mechanism. Vault stays source of truth, Notion becomes the live view without manual copy-paste." },
+    { "id": "d023", "title": "Notion-to-vault pull", "initiative": "Obsidian MCP", "outcome": "0", "status": "open", "depends_on": ["d022"], "size": "M", "impact": "Closes the loop — Daniel annotates/reprioritizes in Notion from his phone, changes flow back to vault for agents to act on." },
+    { "id": "d024", "title": "Wire into debrief/program (auto-push on backlog update)", "initiative": "Obsidian MCP", "outcome": "0", "status": "open", "depends_on": ["d022"], "size": "S", "impact": "Removes manual sync step. When /debrief or /program updates the vault backlog, Notion updates automatically." },
+    { "id": "d025", "title": "/program integration with vault task notes", "initiative": "Agentic Stack", "outcome": "0", "status": "open", "depends_on": null, "size": "M", "impact": "Execution tracking lives in the vault, not just in session context. Tasks persist across sessions with status and handoff notes." },
+
+    { "id": "d026", "title": "First outreach — 2-3 Brooklyn PM companies", "initiative": "Composter", "outcome": "D", "status": "open", "depends_on": null, "size": "S", "impact": "First real conversation with a potential customer. Everything before this is research — this is the market signal." },
+    { "id": "d027", "title": "OEM supplier research", "initiative": "Composter", "outcome": "D", "status": "open", "depends_on": ["d026"], "size": "S", "impact": "Identifies 3-5 electric composter manufacturers for distribution. Only worth doing after outreach confirms demand signal." },
+
+    { "id": "d100", "title": "Push Deadweight to public GitHub", "initiative": "Deadweight", "outcome": "B", "status": "done", "completed": "2026-03-27" },
+    { "id": "d101", "title": "Deadweight v0.1.0 — full pipeline", "initiative": "Deadweight", "outcome": "B", "status": "done", "completed": "2026-03-24" },
+    { "id": "d102", "title": "Deadweight blog post published", "initiative": "Website", "outcome": "A", "status": "done", "completed": "2026-03-27" },
+    { "id": "d103", "title": "v1 website milestone — homepage, about, portfolio (5 projects), writing (4 posts), tag system, material identity", "initiative": "Website", "outcome": "A", "status": "done", "completed": "2026-03-28" },
+    { "id": "d104", "title": "v2 design system — C2-Refined, base.css, content pages updated", "initiative": "Website", "outcome": "A", "status": "done", "completed": "2026-04-02" },
+    { "id": "d105", "title": "E1+E2 Aperture + Logbook homepage", "initiative": "Website", "outcome": "A", "status": "done", "completed": "2026-04-04" },
+    { "id": "d106", "title": "4 blog posts published — Reverse Engineering, Infra Beats Convenience, AI Pricing, Deadweight", "initiative": "Website", "outcome": "A", "status": "done", "completed": "2026-03-27" },
+    { "id": "d107", "title": "Agentic stack case study narrative", "initiative": "Website", "outcome": "A", "status": "done", "completed": "2026-03-27" },
+    { "id": "d108", "title": "About page — 7 operating tenets", "initiative": "Website", "outcome": "A", "status": "done", "completed": "2026-03-24" },
+    { "id": "d109", "title": "D1 diagram concept exploration — validated then archived", "initiative": "Website", "outcome": "A", "status": "done", "completed": "2026-04-04" },
+    { "id": "d110", "title": "D2 figure container + obsidian-mcp.html content surgery", "initiative": "Website", "outcome": "A", "status": "done", "completed": "2026-04-08" },
+    { "id": "d111", "title": "Dead links fixed + writing page killed + cleanUrls", "initiative": "Website", "outcome": "A", "status": "done", "completed": "2026-04-09" },
+    { "id": "d112", "title": "Unified tag system — 5 capability-domain tags", "initiative": "Website", "outcome": "A", "status": "done", "completed": "2026-03-27" },
+    { "id": "d113", "title": "Package agentic stack as portfolio case study", "initiative": "Website", "outcome": "A", "status": "done", "completed": "2026-03-27" },
+    { "id": "d114", "title": "Reframed Anthropic timeline from 9-12 months to 6-8 weeks via CCA-F", "initiative": "CCA-F + Anthropic", "outcome": "A", "status": "done", "completed": "2026-03-27" },
+
+    { "id": "d120", "title": "6 built-in analyzers + extensible data model", "initiative": "Deadweight", "outcome": "B", "status": "done", "completed": "2026-03-24" },
+    { "id": "d121", "title": "Benchmark data + carrier intelligence rules", "initiative": "Deadweight", "outcome": "B", "status": "done", "completed": "2026-03-24" },
+    { "id": "d122", "title": "Branded PDF report + CLI", "initiative": "Deadweight", "outcome": "B", "status": "done", "completed": "2026-03-24" },
+
+    { "id": "d130", "title": "Diagnose sprint failures + headless sprint template", "initiative": "Agentic System", "outcome": "C", "status": "done", "completed": "2026-04-06" },
+    { "id": "d131", "title": "Self-evaluating producers Phase 1 + task schema + compiler", "initiative": "Agentic System", "outcome": "C", "status": "done", "completed": "2026-04-08" },
+    { "id": "d132", "title": "Session tracking system + backfill 76 sessions", "initiative": "Claude Harness", "outcome": "C", "status": "done", "completed": "2026-04-05" },
+    { "id": "d133", "title": "Project isolation — all 8 projects with CLAUDE.md + scoped memory", "initiative": "Claude Harness", "outcome": "C", "status": "done", "completed": "2026-04-08" },
+    { "id": "d134", "title": "13 skills migrated to ~/.claude/skills/ + sprint skill rebuilt", "initiative": "Agentic Stack", "outcome": "C", "status": "done", "completed": "2026-04-02" },
+    { "id": "d135", "title": "Permission model flipped + coverage system", "initiative": "Agentic Stack", "outcome": "C", "status": "done", "completed": "2026-03-27" },
+    { "id": "d136", "title": "Operational value chain — /architect → /pm → /program → build", "initiative": "Agentic Stack", "outcome": "C", "status": "done", "completed": "2026-03-23" },
+    { "id": "d137", "title": "Sprint runner script for headless sprints", "initiative": "Agentic Stack", "outcome": "C", "status": "done", "completed": "2026-04-04" },
+
+    { "id": "d140", "title": "3-way financial model evaluation", "initiative": "Composter", "outcome": "D", "status": "done", "completed": "2026-03-20" },
+    { "id": "d141", "title": "NYC enforcement research + competitive landscape", "initiative": "Composter", "outcome": "D", "status": "done", "completed": "2026-03-20" },
+    { "id": "d142", "title": "Prospect list — 11 PM companies + sales playbook", "initiative": "Composter", "outcome": "D", "status": "done", "completed": "2026-03-20" },
+
+    { "id": "d150", "title": "Claude.ai API sync — 274 conversations", "initiative": "Obsidian MCP", "outcome": "0", "status": "done", "completed": "2026-03-16" },
+    { "id": "d151", "title": "Notion API sync — 104 pages + 77 export", "initiative": "Obsidian MCP", "outcome": "0", "status": "done", "completed": "2026-03-17" },
+    { "id": "d152", "title": "Apple Notes sync — 217 notes", "initiative": "Obsidian MCP", "outcome": "0", "status": "done", "completed": "2026-03-20" },
+    { "id": "d153", "title": "Two-axis taxonomy — 672 notes classified, 14 dimensions", "initiative": "Obsidian MCP", "outcome": "0", "status": "done", "completed": "2026-03-24" },
+    { "id": "d154", "title": "Link graph — 2,599 wikilinks across 503 notes", "initiative": "Obsidian MCP", "outcome": "0", "status": "done", "completed": "2026-03-24" },
+    { "id": "d155", "title": "Runway Model prioritization — 45 items scored, 26 archived", "initiative": "Obsidian MCP", "outcome": "0", "status": "done", "completed": "2026-03-24" }
+  ],
+  "seeds": [
+    { "id": "s001", "title": "DOE diesel API — auto-update fuel benchmarks", "initiative": "Deadweight", "origin": "Product roadmap planning" },
+    { "id": "s002", "title": "Batch invoice processing", "initiative": "Deadweight", "origin": "Product roadmap planning" },
+    { "id": "s003", "title": "Agentic delivery chain — auto-draft client emails", "initiative": "Deadweight", "origin": "Product roadmap planning" },
+    { "id": "s004", "title": "OCR preprocessing for scanned invoices", "initiative": "Deadweight", "origin": "Product roadmap planning" },
+    { "id": "s005", "title": "Async capture — evaluate Claude mobile app, capture queue, triage agent", "initiative": "Agentic System", "origin": "Ideas happen away from keyboard, context lost by session start" },
+    { "id": "s006", "title": "Vault search improvements — title weighting, word-boundary, recency boost", "initiative": "Obsidian MCP", "origin": "Search sometimes misses or returns wrong results" },
+    { "id": "s007", "title": "Log failed searches for observability", "initiative": "Obsidian MCP", "origin": "Need data before investing in search rebuild" },
+    { "id": "s008", "title": "Code session importer — sync JSONL transcripts into vault", "initiative": "Obsidian MCP", "origin": "Biggest gap in conversation history" },
+    { "id": "s009", "title": "AI-powered classification upgrade", "initiative": "Obsidian MCP", "origin": "Current classification is keyword-based" },
+    { "id": "s010", "title": "Vault health dashboard — note counts, tag distribution, link density", "initiative": "Obsidian MCP", "origin": "No monitoring on vault quality" },
+    { "id": "s011", "title": "Real-time sync investigation", "initiative": "Obsidian MCP", "origin": "Depends on Claude.ai API" },
+    { "id": "s012", "title": "Harness analytics — git hygiene, time tracking, planning ratio, weekly digest", "initiative": "Claude Harness", "origin": "Can't tell which sessions are productive vs spinning" },
+    { "id": "s013", "title": "Autonomous sprint pipeline — remote trigger, PR review, feedback loop", "initiative": "Agentic Stack", "origin": "Removing Daniel from execution loop" },
+    { "id": "s014", "title": "Rewrite D2 sprint script — first headless template test", "initiative": "Agentic System", "origin": "Testing whether headless template works in practice" },
+    { "id": "s015", "title": "Composter entity formation", "initiative": "Composter", "origin": "Premature — needs market signal first" },
+    { "id": "s016", "title": "Monitor NYC enforcement escalation data", "initiative": "Composter", "origin": "External dependency — DSNY reports" },
+    { "id": "s017", "title": "Composter business page on portfolio", "initiative": "Website", "origin": "Blocked on validation" },
+    { "id": "s018", "title": "AI Skills Toolkit — GitHub repo + blog post", "initiative": "Website", "origin": "Deferred — doesn't serve Anthropic timeline" },
+    { "id": "s019", "title": "Activity log on homepage", "initiative": "Website", "origin": "Explored, killed — no conviction on impact" },
+    { "id": "s020", "title": "Architect handoff notes — regular gap assessment cadence", "initiative": "Agentic Stack", "origin": "No regular rhythm for gap assessment" }
+  ],
+  "gaps_and_fixes": [
+    { "id": "f001", "title": "Hierarchical breadcrumbs", "initiative": "Website" },
+    { "id": "f002", "title": "Fix duplicate deadweight entry", "initiative": "Website" },
+    { "id": "f003", "title": "Visual verification of homepage post-merge", "initiative": "Website" },
+    { "id": "f004", "title": "Mobile polish pass (remaining pages)", "initiative": "Website" },
+    { "id": "f005", "title": "Re-run link builder after future imports", "initiative": "Obsidian MCP" },
+    { "id": "f006", "title": "Git hygiene audit", "initiative": "Claude Harness" },
+    { "id": "f007", "title": "Verify skills load from ~/.claude/skills/", "initiative": "Agentic Stack" },
+    { "id": "f008", "title": "Writing page navigation routing", "initiative": "Website" }
+  ],
+  "design_explorations": [
+    { "id": "x001", "title": "Homepage thesis — make a claim before anyone clicks", "initiative": "Website" },
+    { "id": "x002", "title": "Narrative arc across pages", "initiative": "Website" },
+    { "id": "x003", "title": "D2 visual identity exploration (assembly manual aesthetic)", "initiative": "Website" },
+    { "id": "x004", "title": "1-2 highlight component concepts (D3-D4)", "initiative": "Website" }
   ],
   "skip_keywords": [
     "python/sql fluency",
     "python/sql"
-  ],
-  "dedup_keywords": [
-    "apply to anthropic",
-    "cca-f certification"
   ]
 }
