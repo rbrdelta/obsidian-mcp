@@ -8,7 +8,7 @@
     "meta": "Meta"
   },
   "domain_rules": {
-    "domain/career": ["job", "interview", "resume", "salary", "hiring", "employment", "linkedin", "recruiter", "chase", "jpmorgan", "talentcrm", "promotion", "onboarding", "performance review", "cover letter", "networking"],
+    "domain/career": ["job", "interview", "resume", "salary", "hiring", "employment", "linkedin", "recruiter", "promotion", "onboarding", "performance review", "cover letter", "networking"],
     "domain/ventures": ["composter", "composting", "startup", "business model", "revenue model", "b2b", "saas", "customer acquisition", "market opportunity", "pitch", "franchise", "distribution", "white label", "roi", "breakeven"],
     "domain/building": ["code", "programming", "typescript", "python", "api", "server", "wsl", "linux", "github", "npm", "deploy", "docker", "database", "frontend", "backend", "react", "node", "css", "html", "debug"],
     "domain/ai": ["claude", "chatgpt", "llm", "gpt", "anthropic", "openai", "mcp", "prompt", "fine-tune", "embedding", "transformer", "machine learning", "neural", "copilot", "gemini"],

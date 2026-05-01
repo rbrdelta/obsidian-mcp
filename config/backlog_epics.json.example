@@ -1,0 +1,24 @@
+{
+  "_comment": "Sample structure for config/backlog_epics.json. The real file is gitignored — copy this to backlog_epics.json and replace with your own data. Read by .claude/hooks/session-start.sh and src/importers/notion_backlog_*.ts.",
+  "outcomes": [
+    {
+      "key": "0",
+      "name": "Example Outcome",
+      "impact": "One-line description of why this outcome matters."
+    }
+  ],
+  "deliverables": [
+    {
+      "id": "d001",
+      "title": "Example deliverable title",
+      "initiative": "Project / Initiative",
+      "outcome": "0",
+      "status": "todo",
+      "owner": "daniel",
+      "seq": 1,
+      "sessions": 1,
+      "depends_on": null,
+      "impact": "Why this deliverable matters in one sentence."
+    }
+  ]
+}

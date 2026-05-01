@@ -143,7 +143,7 @@ function classifyTags(title: string, content: string): string[] {
 
   // Additional heuristic tags
   const patterns: [RegExp, string][] = [
-    [/\b(daughter|son|wife|husband|family|mom|dad|parent|child|kid|riley|rainbow)\b/i, 'personal'],
+    [/\b(daughter|son|wife|husband|family|mom|dad|parent|child|kid)\b/i, 'personal'],
     [/\b(lead|leadership|manage|team|culture|tenet|principle|decision)\b/i, 'leadership'],
     [/\b(read|book|learn|study|philosophy|history)\b/i, 'learning'],
     [/\b(idea|project|build|create|tracker|app|tool)\b/i, 'ideas'],

@@ -28,7 +28,7 @@ import { loadSkiplist, isSkipped } from './skiplist';
 const DEST_FOLDER = 'Sources/Apple-Notes';
 const SYNC_INDEX_FILENAME = '.apple_sync_index.json';
 const ICLOUD_EXPORT_PATH = process.env.APPLE_NOTES_PATH
-  || '/mnt/c/Users/deero/iCloudDrive/NotesExport';
+  || '/mnt/c/Users/<username>/iCloudDrive/NotesExport';
 
 interface SyncIndex {
   files: Record<string, { path: string; hash: string; modified: string }>;
