@@ -15,6 +15,7 @@ export interface ConversationData {
   updated?: string;
   messages: ConversationMessage[];
   summary?: string;
+  project?: string; // claude.ai Project name, when the conversation lives in one
 }
 
 export interface ImportResult {
@@ -113,6 +114,7 @@ export async function importConversation(
     imported: now(),
     source: 'claude-conversations',
     source_id: conv.id,
+    project: conv.project,
     tags: allTags,
     status: 'imported',
     word_count: wordCount,

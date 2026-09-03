@@ -119,6 +119,7 @@ interface RawConversationSummary {
   summary: string;
   created_at: string;
   updated_at: string;
+  project?: { uuid: string; name: string } | null;
 }
 
 interface RawConversationFull extends RawConversationSummary {
@@ -352,6 +353,8 @@ async function sync(sessionKey: string, options: SyncOptions) {
       const fullConv = await getConversation(sessionKey, summary.uuid);
       const conv = convertConversation(fullConv);
       if (conv) {
+        // Project name only exists on the list response, not the individual fetch
+        conv.project = summary.project?.name;
         fullConversations.push(conv);
       } else {
         process.stderr.write(`  [SKIP] Empty conversation: ${summary.name}\n`);
