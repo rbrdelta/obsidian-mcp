@@ -1,6 +1,8 @@
 # obsidian-mcp
 
-MCP server for the Unified Knowledge Base. Connects Claude Code and Claude Desktop to your Obsidian vault at `/mnt/c/MCP`.
+MCP server that gives Claude Code and Claude Desktop read/write access to an Obsidian vault: search, notes, links and AI tagging across ~670 imported notes (Claude.ai conversations, Notion, Apple Notes). The vault path is set by `VAULT_PATH`.
+
+Write-up: [Field Note 01 — Conversation Sync](https://rowbyroh.com/field-notes/conversation-sync).
 
 ## Tools
 
@@ -10,6 +12,9 @@ MCP server for the Unified Knowledge Base. Connects Claude Code and Claude Deskt
 | `search_notes` | Full-text search with tag/date filters |
 | `link_notes` | Bidirectional [[wiki-links]] between notes |
 | `get_backlinks` | Find all notes linking to a note |
+| `read_note` | Read a note's full content, frontmatter and metadata by path or title |
+| `process_daily_note` | Split a daily note into atomic notes, dedupe voice-to-text, auto-tag, auto-link |
+| `screenshot` | Capture the current Windows screen as an image |
 
 ## Setup
 
