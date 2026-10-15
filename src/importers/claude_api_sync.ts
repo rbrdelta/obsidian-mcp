@@ -128,7 +128,35 @@ interface RawConversationFull extends RawConversationSummary {
 
 // --- HTTP client ---
 
-function apiGet<T>(urlPath: string, sessionKey: string): Promise<T> {
+// Error messages start with a fixed tag so vault-sync.sh can tell a dead key
+// (AUTH_EXPIRED) from a transient failure without guessing from the wording.
+// Only AUTH_EXPIRED means "get a new key"; everything else retries next run.
+class ApiError extends Error {
+  constructor(message: string, readonly retryable: boolean) {
+    super(message);
+  }
+}
+
+const RETRY_DELAYS_MS = [5000, 20000];
+
+/**
+ * Classify a non-2xx response. Claude.ai sits behind Cloudflare, which also
+ * answers 403 when it challenges a non-browser client — that is not an
+ * expired key. A real auth failure comes back from the API as JSON.
+ */
+export function classifyFailure(status: number, contentType: string, cfMitigated: string, body: string): ApiError {
+  const snippet = body.replace(/\s+/g, ' ').slice(0, 200);
+  const detail = `status=${status} cf-mitigated=${cfMitigated || '-'} body="${snippet}"`;
+  const isJson = contentType.includes('application/json');
+  if (status === 401 || (status === 403 && isJson && !cfMitigated)) {
+    return new ApiError(`AUTH_EXPIRED ${detail}`, false);
+  }
+  if (status === 403) return new ApiError(`CF_BLOCKED ${detail}`, true);
+  if (status === 429 || status >= 500) return new ApiError(`TRANSIENT ${detail}`, true);
+  return new ApiError(`HTTP_ERROR ${detail}`, false);
+}
+
+function apiGetOnce<T>(urlPath: string, sessionKey: string): Promise<T> {
   return new Promise((resolve, reject) => {
     const url = new URL(urlPath, BASE_URL);
     const req = https.get(url, {
@@ -138,39 +166,47 @@ function apiGet<T>(urlPath: string, sessionKey: string): Promise<T> {
         'User-Agent': 'obsidian-mcp-sync/1.0',
       },
     }, (res) => {
-      if (res.statusCode === 403 || res.statusCode === 401) {
-        reject(new Error(`Auth failed (${res.statusCode}). Session key may be expired. Refresh from Claude Desktop dev tools.`));
-        res.resume();
-        return;
-      }
-      if (res.statusCode === 429) {
-        reject(new Error('Rate limited. Wait a moment and retry.'));
-        res.resume();
-        return;
-      }
-      if (res.statusCode && (res.statusCode < 200 || res.statusCode >= 300)) {
-        reject(new Error(`API returned ${res.statusCode} for ${urlPath}`));
-        res.resume();
-        return;
-      }
-
       const chunks: Buffer[] = [];
       res.on('data', (chunk: Buffer) => chunks.push(chunk));
       res.on('end', () => {
+        const body = Buffer.concat(chunks).toString('utf8');
+        const status = res.statusCode ?? 0;
+        if (status < 200 || status >= 300) {
+          reject(classifyFailure(
+            status,
+            String(res.headers['content-type'] ?? ''),
+            String(res.headers['cf-mitigated'] ?? ''),
+            body,
+          ));
+          return;
+        }
         try {
-          const body = Buffer.concat(chunks).toString('utf8');
           resolve(JSON.parse(body));
         } catch (e) {
-          reject(new Error(`Failed to parse response for ${urlPath}: ${e}`));
+          reject(new ApiError(`HTTP_ERROR unparseable body for ${urlPath}: ${e}`, true));
         }
       });
     });
 
-    req.on('error', reject);
+    // Network errors (DNS, reset, AggregateError from happy-eyeballs) are transient
+    req.on('error', (e) => reject(e instanceof ApiError ? e : new ApiError(`TRANSIENT network: ${e}`, true)));
     req.setTimeout(30000, () => {
-      req.destroy(new Error(`Timeout fetching ${urlPath}`));
+      req.destroy(new ApiError(`TRANSIENT timeout fetching ${urlPath}`, true));
     });
   });
+}
+
+async function apiGet<T>(urlPath: string, sessionKey: string): Promise<T> {
+  for (let attempt = 0; ; attempt++) {
+    try {
+      return await apiGetOnce<T>(urlPath, sessionKey);
+    } catch (err) {
+      const retryable = err instanceof ApiError && err.retryable;
+      if (!retryable || attempt >= RETRY_DELAYS_MS.length) throw err;
+      process.stderr.write(`[sync] ${(err as Error).message} — retrying in ${RETRY_DELAYS_MS[attempt] / 1000}s\n`);
+      await sleep(RETRY_DELAYS_MS[attempt]);
+    }
+  }
 }
 
 function sleep(ms: number): Promise<void> {
@@ -361,6 +397,8 @@ async function sync(sessionKey: string, options: SyncOptions) {
       }
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : String(err);
+      // A dead key fails every remaining fetch; stop before saving last-sync
+      if (msg.startsWith('AUTH_EXPIRED')) throw err;
       process.stderr.write(`  [ERR] Failed to fetch ${summary.name}: ${msg}\n`);
     }
 
@@ -437,7 +475,9 @@ async function main() {
   await sync(sessionKey, { dryRun, duplicateMode, full, limit, since });
 }
 
-main().catch(err => {
-  process.stderr.write(`Fatal: ${err}\n`);
-  process.exit(1);
-});
+if (require.main === module) {
+  main().catch(err => {
+    process.stderr.write(`Fatal: ${err instanceof Error ? err.message : err}\n`);
+    process.exit(1);
+  });
+}
