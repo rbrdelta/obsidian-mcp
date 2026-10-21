@@ -2,7 +2,8 @@
  * Sync conversations from claude.ai API → vault.
  *
  * Auth: Set CLAUDE_SESSION_KEY env var with your sessionKey cookie value.
- *       (Claude Desktop → F12 → Application → Cookies → sessionKey)
+ *       (claude.ai in a browser → F12 → Application → Cookies → sessionKey)
+ *       Set CLAUDE_SESSION_KEY_FILE to have a rotated key written back to that file.
  *
  * Usage:
  *   CLAUDE_SESSION_KEY=sk-ant-... npx ts-node src/importers/claude_api_sync.ts [--dry-run] [--overwrite] [--full] [--limit N] [--since YYYY-MM-DD]
@@ -156,16 +157,49 @@ export function classifyFailure(status: number, contentType: string, cfMitigated
   return new ApiError(`HTTP_ERROR ${detail}`, false);
 }
 
+// --- Session key rotation ---
+// If claude.ai sends a replacement sessionKey in Set-Cookie, use it for the
+// rest of this run and write it back to CLAUDE_SESSION_KEY_FILE so the next
+// cron run starts with the live key instead of the one the server retired.
+
+let rotatedKey: string | null = null;
+
+/** Return the sessionKey value from Set-Cookie headers, or null if absent/cleared. */
+export function extractSessionKey(setCookie: string[] | undefined): string | null {
+  for (const cookie of setCookie ?? []) {
+    const match = cookie.match(/^\s*sessionKey=([^;]*)/);
+    if (match && match[1].trim()) return match[1].trim();
+  }
+  return null;
+}
+
+export function saveRotatedKey(newKey: string, sentKey: string): void {
+  if (newKey === sentKey || newKey === rotatedKey) return;
+  rotatedKey = newKey;
+  const keyFile = process.env.CLAUDE_SESSION_KEY_FILE;
+  if (!keyFile) {
+    process.stderr.write('[sync] KEY_ROTATED but CLAUDE_SESSION_KEY_FILE not set — new key not saved\n');
+    return;
+  }
+  const tmp = `${keyFile}.tmp`;
+  fs.writeFileSync(tmp, newKey + '\n', { mode: 0o600 });
+  fs.renameSync(tmp, keyFile);
+  process.stderr.write(`[sync] KEY_ROTATED: saved replacement session key to ${keyFile}\n`);
+}
+
 function apiGetOnce<T>(urlPath: string, sessionKey: string): Promise<T> {
+  const sentKey = rotatedKey ?? sessionKey;
   return new Promise((resolve, reject) => {
     const url = new URL(urlPath, BASE_URL);
     const req = https.get(url, {
       headers: {
-        'Cookie': `sessionKey=${sessionKey}`,
+        'Cookie': `sessionKey=${sentKey}`,
         'Accept': 'application/json',
         'User-Agent': 'obsidian-mcp-sync/1.0',
       },
     }, (res) => {
+      const newKey = extractSessionKey(res.headers['set-cookie']);
+      if (newKey) saveRotatedKey(newKey, sentKey);
       const chunks: Buffer[] = [];
       res.on('data', (chunk: Buffer) => chunks.push(chunk));
       res.on('end', () => {
