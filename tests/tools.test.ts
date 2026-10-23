@@ -24,6 +24,25 @@ const read = (rel: string) => fs.readFileSync(path.join(VAULT, rel), 'utf8');
 const throws = async (fn: () => Promise<unknown>, msg: string) => { try { await fn(); return false; } catch (e) { return String(e).includes(msg); } };
 
 async function main() {
+  // ─── guardrail: the Confidential folder is unreachable by every tool ──
+  write('Confidential/secret plan.md', '---\ntitle: Secret plan\n---\nsecretword [[Open Note]]\n');
+  write('confidential/lower.md', 'secretword lowercase folder\n');
+  write('Open Note.md', '---\ntitle: Open Note\n---\nsecretword in the open\n');
+  fs.mkdirSync(path.join(VAULT, 'Linked'), { recursive: true });
+  fs.symlinkSync(path.join(VAULT, 'Confidential'), path.join(VAULT, 'Linked', 'via-link'));
+  const hits = await searchNotes({ query: 'secretword' });
+  check('guardrail: search never returns a Confidential note (any case, or through a symlink)', hits.total === 1 && hits.results[0].title === 'Open Note');
+  check('guardrail: search inside the Confidential folder is refused', await throws(() => searchNotes({ query: 'x', folder: 'Confidential' }), 'Refused'));
+  check('guardrail: search of a folder outside the vault is refused', await throws(() => searchNotes({ query: 'x', folder: '../' }), 'Refused'));
+  check('guardrail: read by path is refused', await throws(() => readNote({ path: 'Confidential/secret plan.md' }), 'Refused'));
+  check('guardrail: read by path, other case, is refused', await throws(() => readNote({ path: 'CONFIDENTIAL/secret plan.md' }), 'Refused'));
+  check('guardrail: read through a symlink into it is refused', await throws(() => readNote({ path: 'Linked/via-link/secret plan.md' }), 'Refused'));
+  check('guardrail: read outside the vault is refused', await throws(() => readNote({ path: '../../etc/hostname' }), 'Refused'));
+  check('guardrail: read by title never finds it', await throws(() => readNote({ title: 'secret plan' }), 'not found'));
+  check('guardrail: writing into it is refused', await throws(() => createNote({ title: 'x', content: 'x', folder: 'Confidential' }), 'Refused'));
+  const gbl = await getBacklinks({ note_title: 'Open Note' });
+  check('guardrail: backlinks never list a Confidential note', gbl.backlinks.length === 0 && !JSON.stringify(gbl).toLowerCase().includes('secret'));
+  for (const f of ['Confidential/secret plan.md', 'confidential/lower.md', 'Open Note.md', 'Linked/via-link']) fs.rmSync(path.join(VAULT, f), { recursive: true });
   // ─── create_note ────────────────────────────────────────────────────
   const c1 = await createNote({ title: 'Plan: Q4?', content: 'thinking about obsidian', tags: ['mine'], source_id: 'x1', related: ['Other'] });
   const t1 = read(c1.relative_path);
