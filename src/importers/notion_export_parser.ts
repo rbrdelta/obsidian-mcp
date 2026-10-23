@@ -17,7 +17,7 @@ const ATTACH_FOLDER = 'Attachments';
 // Notion export filenames: "Title abc123def456.md" — last segment before .ext is the block ID
 const NOTION_ID_PATTERN = /\s+([a-f0-9]{32}|[a-f0-9-]{36})$/;
 
-function extractTitleAndId(filename: string): { title: string; notionId: string } {
+export function extractTitleAndId(filename: string): { title: string; notionId: string } {
   const ext = path.extname(filename);
   const base = path.basename(filename, ext);
   const match = base.match(NOTION_ID_PATTERN);
@@ -45,7 +45,7 @@ interface ImportOptions {
   overwrite: boolean;
 }
 
-async function importExport(sourceDir: string, options: ImportOptions) {
+export async function importExport(sourceDir: string, options: ImportOptions) {
   const { dryRun, overwrite } = options;
 
   if (!fs.existsSync(sourceDir)) {
@@ -192,7 +192,9 @@ async function main() {
   await importExport(sourceDir, { dryRun, overwrite });
 }
 
-main().catch(err => {
-  process.stderr.write(`Fatal: ${err}\n`);
-  process.exit(1);
-});
+if (require.main === module) {
+  main().catch(err => {
+    process.stderr.write(`Fatal: ${err}\n`);
+    process.exit(1);
+  });
+}

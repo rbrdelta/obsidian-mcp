@@ -35,7 +35,7 @@ interface NoteIndex {
  * Extract meaningful keywords from text (title + first ~500 words of body).
  * Filters out stopwords and very short tokens.
  */
-function extractKeywords(title: string, body: string): Set<string> {
+export function extractKeywords(title: string, body: string): Set<string> {
   const stopwords = new Set([
     'the', 'a', 'an', 'and', 'or', 'but', 'in', 'on', 'at', 'to', 'for',
     'of', 'with', 'by', 'from', 'is', 'are', 'was', 'were', 'be', 'been',
@@ -91,7 +91,7 @@ function similarity(a: NoteIndex, b: NoteIndex): number {
  * Detect series: notes with numbered suffixes or shared base titles.
  * Returns map of base title → ordered list of note indices.
  */
-function detectSeries(notes: NoteIndex[]): Map<string, number[]> {
+export function detectSeries(notes: NoteIndex[]): Map<string, number[]> {
   const series = new Map<string, number[]>();
 
   // Pattern: "Title N", "Title Session N", "Title Part N"
@@ -148,7 +148,7 @@ function buildRelatedSection(
 /**
  * Remove existing ## Related section from content.
  */
-function stripRelatedSection(content: string): string {
+export function stripRelatedSection(content: string): string {
   // Match --- separator followed by ## Related and everything after
   const pattern = /\n---\n\n## Related\n[\s\S]*$/;
   return content.replace(pattern, '');
@@ -158,7 +158,7 @@ interface LinkBuilderOptions {
   dryRun: boolean;
 }
 
-async function buildLinks(options: LinkBuilderOptions): Promise<void> {
+export async function buildLinks(options: LinkBuilderOptions): Promise<void> {
   const { dryRun } = options;
   const vaultPath = getVaultPath();
 
@@ -297,7 +297,9 @@ async function main() {
   await buildLinks({ dryRun });
 }
 
-main().catch(err => {
-  process.stderr.write(`Fatal: ${err}\n`);
-  process.exit(1);
-});
+if (require.main === module) {
+  main().catch(err => {
+    process.stderr.write(`Fatal: ${err}\n`);
+    process.exit(1);
+  });
+}

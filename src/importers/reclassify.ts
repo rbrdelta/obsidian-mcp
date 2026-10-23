@@ -44,7 +44,7 @@ function isPreservedPrefix(tag: string): boolean {
   return PRESERVE_PREFIXES.some(p => tag.startsWith(p));
 }
 
-async function reclassify(options: ReclassifyOptions): Promise<void> {
+export async function reclassify(options: ReclassifyOptions): Promise<void> {
   const { dryRun } = options;
   const vaultPath = getVaultPath();
 
@@ -136,7 +136,9 @@ async function main() {
   await reclassify({ dryRun });
 }
 
-main().catch(err => {
-  process.stderr.write(`Fatal: ${err}\n`);
-  process.exit(1);
-});
+if (require.main === module) {
+  main().catch(err => {
+    process.stderr.write(`Fatal: ${err}\n`);
+    process.exit(1);
+  });
+}

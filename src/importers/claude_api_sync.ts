@@ -299,7 +299,7 @@ function extractText(msg: RawMessage): string {
   return (msg.text || '').trim();
 }
 
-function convertConversation(raw: RawConversationFull): ConversationData | null {
+export function convertConversation(raw: RawConversationFull): ConversationData | null {
   const messages = raw.chat_messages
     .map((m): ConversationMessage | null => {
       const text = extractText(m);

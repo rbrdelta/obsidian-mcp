@@ -213,7 +213,7 @@ interface BlocksResponse {
 
 // --- Block → Markdown conversion ---
 
-function richTextToMarkdown(richTexts: NotionRichText[]): string {
+export function richTextToMarkdown(richTexts: NotionRichText[]): string {
   return richTexts.map(rt => {
     let text = rt.plain_text;
     const a = rt.annotations;
@@ -231,7 +231,7 @@ function getRichText(block: NotionBlock, blockType: string): NotionRichText[] {
   return data?.rich_text || [];
 }
 
-function blockToMarkdown(block: NotionBlock, indent: number = 0): string {
+export function blockToMarkdown(block: NotionBlock, indent: number = 0): string {
   const prefix = '  '.repeat(indent);
   const type = block.type;
 
@@ -325,7 +325,7 @@ async function getPageBlocks(token: string, pageId: string, indent: number = 0):
 
 // --- Page title extraction ---
 
-function getPageTitle(page: NotionPage): string {
+export function getPageTitle(page: NotionPage): string {
   for (const prop of Object.values(page.properties)) {
     if (prop.type === 'title' && prop.title) {
       const text = prop.title.map(t => t.plain_text).join('');
@@ -337,7 +337,7 @@ function getPageTitle(page: NotionPage): string {
 
 // --- Extract database properties as metadata ---
 
-function extractProperties(page: NotionPage): Record<string, string> {
+export function extractProperties(page: NotionPage): Record<string, string> {
   const meta: Record<string, string> = {};
   for (const [key, prop] of Object.entries(page.properties)) {
     if (prop.type === 'title') continue; // already used as title
@@ -575,7 +575,9 @@ async function main() {
   await sync(token, { dryRun, full, limit });
 }
 
-main().catch(err => {
-  process.stderr.write(`Fatal: ${err}\n`);
-  process.exit(1);
-});
+if (require.main === module) {
+  main().catch(err => {
+    process.stderr.write(`Fatal: ${err}\n`);
+    process.exit(1);
+  });
+}

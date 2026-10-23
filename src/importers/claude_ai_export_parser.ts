@@ -136,7 +136,9 @@ async function main() {
   console.log(JSON.stringify({ imported, skipped, failed }, null, 2));
 }
 
-main().catch(err => {
-  process.stderr.write(`Fatal: ${err}\n`);
-  process.exit(1);
-});
+if (require.main === module) {
+  main().catch(err => {
+    process.stderr.write(`Fatal: ${err}\n`);
+    process.exit(1);
+  });
+}

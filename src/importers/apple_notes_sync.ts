@@ -69,7 +69,7 @@ function hashContent(content: string): string {
  * Parse Apple date format "Aug 9, 2023 at 1:08 PM" to ISO string.
  * Falls back to input string if parsing fails.
  */
-function parseAppleDate(dateStr: string): string {
+export function parseAppleDate(dateStr: string): string {
   if (!dateStr) return '';
   // Remove "at" and try to parse
   const cleaned = dateStr.replace(/\s+at\s+/i, ' ');
@@ -89,7 +89,7 @@ function parseAppleDate(dateStr: string): string {
  *
  * Falls back to file stats if no metadata found.
  */
-function parseMeta(content: string, filePath: string): { meta: NoteMeta; body: string } {
+export function parseMeta(content: string, filePath: string): { meta: NoteMeta; body: string } {
   // Match either --> or --- as separator
   const separatorMatch = content.match(/\n(-->|---)\s*\n/);
 
@@ -140,7 +140,7 @@ interface SyncOptions {
   full: boolean;
 }
 
-async function sync(options: SyncOptions) {
+export async function sync(options: SyncOptions) {
   const { dryRun, full } = options;
 
   if (!fs.existsSync(ICLOUD_EXPORT_PATH)) {
@@ -306,7 +306,9 @@ async function main() {
   await sync({ dryRun, full });
 }
 
-main().catch(err => {
-  process.stderr.write(`Fatal: ${err}\n`);
-  process.exit(1);
-});
+if (require.main === module) {
+  main().catch(err => {
+    process.stderr.write(`Fatal: ${err}\n`);
+    process.exit(1);
+  });
+}
