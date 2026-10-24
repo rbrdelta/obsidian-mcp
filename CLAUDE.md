@@ -23,7 +23,7 @@ npm run promote        # build + test dev + test prod (full pipeline)
 | Notion API sync | `src/importers/notion_sync.ts` | Active, dynamic — 104 pages (Daniel's workspace, updates over API) |
 | Notion export parser | `src/importers/notion_export_parser.ts` | One-time, static — 77 pages (guest workspace snapshot, not updated) |
 | Claude.ai bulk export | `src/importers/claude_ai_export_parser.ts` | Legacy (one-time use) |
-| Apple Notes sync | `src/importers/apple_notes_sync.ts` | Retired 2026-10-09 — 278 notes kept as archive; phone capture now via Phone Notes |
+| Apple Notes sync | `src/importers/apple_notes_sync.ts` | Retired 2026-10-09 — 278 notes kept as archive |
 
 ### Sync Commands
 ```bash
