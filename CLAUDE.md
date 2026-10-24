@@ -23,7 +23,7 @@ npm run promote        # build + test dev + test prod (full pipeline)
 | Notion API sync | `src/importers/notion_sync.ts` | Active, dynamic — 104 pages (Daniel's workspace, updates over API) |
 | Notion export parser | `src/importers/notion_export_parser.ts` | One-time, static — 77 pages (guest workspace snapshot, not updated) |
 | Claude.ai bulk export | `src/importers/claude_ai_export_parser.ts` | Legacy (one-time use) |
-| Apple Notes sync | `src/importers/apple_notes_sync.ts` | Semi-automated — 278 notes (iPhone Shortcut → iCloud Drive, 50/batch) |
+| Apple Notes sync | `src/importers/apple_notes_sync.ts` | Retired 2026-10-09 — 278 notes kept as archive; phone capture now via Phone Notes |
 
 ### Sync Commands
 ```bash
@@ -33,7 +33,7 @@ npm run sync / sync:dry / sync:dev
 # Notion (needs NOTION_TOKEN env var)
 npm run notion:sync / notion:dry / notion:dev
 
-# Apple Notes (run iPhone Shortcut first, wait for iCloud sync)
+# Apple Notes (retired 2026-10-09 — archive only, don't run the Shortcut)
 npm run apple:sync / apple:dry / apple:dev
 ```
 
